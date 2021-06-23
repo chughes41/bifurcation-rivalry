@@ -1,0 +1,58 @@
+dRl1/dt=(-Rl1+((alpha*El1)/(Sm+Hl1^nm + sigma^nm)))/taus
+El1 = max((Dl1^nm - wo*or),0) * max((1+wa*Ra1),0)
+dHl1/dt = (-Hl1 + wh*Rl1)/tauh
+
+dRl2/dt=(-Rl2+((alpha*El2)/(Sm+Hl2^nm + sigma^nm)))/taus
+El2 = max((Dl2^nm - wo*or), 0)*max((1+wa*Ra2),0)
+dHl2/dt = (-Hl2 + wh*Rl2)/tauh
+
+dRr1/dt=(-Rr1+((alpha*El1)/(Sm+Hr1^nm + sigma^nm)))/taus
+Er1 = max((Dr1^nm - wo*ol),0) * max((1+wa*Ra1),0)
+dHr1/dt = (-Hr1 + wh*Rr1)/tauh
+
+dRr2/dt=(-Rr2+((alpha*Er2)/(Sm+Hr2^nm + sigma^nm)))/taus
+Er2 = max((Dr2^nm - wo*ol),0)*max((1+wa*Ra2),0)
+dHr2/dt = (-Hr2 + wh*Rr2)/tauh
+
+Sm = El1+El2 + Er1+Er2
+
+dRb1/dt = (-Rb1 + (Eb1)/(Sb1 + Hb1^n +sigma^n))/(taus)
+Eb1 = (Rl1 + Rr1)^n
+Sb1 = Eb1
+dHb1/dt = (-Hb1 + wh*Rb1)/tauh
+
+dRb2/dt = (-Rb2 + (Eb2)/(Sb2 + Hb2^n +sigma^n))/(taus)
+Eb2 = (Rl2 + Rr2)^n
+Sb2 = Eb2
+dHb2/dt = (-Hb2 + wh*Rb2)/tauh
+
+dRa1/dt = (-Ra1 + (Ea1)/(Sa + sigmaA^n))/taua
+Ea1 = (Rb1-Rb2)^n
+
+dRa2/dt = (-Ra2 + (Ea2)/(Sa + sigmaA^n))/taua
+Ea2 = (Rb2-Rb1)^n
+
+Sa = max(Ea1,0) + max(Ea2,0)
+
+dRor1/dt = (-Ror1 + (Eor1)/(Sor + sigma^n))/tauo
+Eor1 = (max((Rr1 - Rl1),0))^n
+dRor2/dt = (-Ror2 + (Eor2)/(Sor + sigma^n))/tauo
+Eor2 = (max((Rr2 - Rl2),0))^n
+Sor = Eor1 + Eor2
+Or = Ror1 + Ror2
+
+dRol1/dt = (-Rol1 + (Eol1)/(Sol + sigma^n))/tauo
+Eol1 = (max((Rl1 - Rr1),0))^n
+dRol2/dt = (-Rol2 + (Eol2)/(Sol + sigma^n))/tauo
+Eol2 = (max((Rl2 - Rr2),0))^n
+Sol = Eol1 + Eol2
+Ol = Rol1 + Rol2
+
+
+
+param taua=150, tauo=20, taun=100, taus=5, tauh=2000
+param sigma=0.5, sigmaA=.2, alpha=3
+param wh=2, wo=.65, wa=.6
+param m=2, nm=1, n=1
+param Dl1=.5, Dl2=0, Dr1=0, Dr2=.5
+done
