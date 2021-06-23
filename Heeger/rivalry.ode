@@ -6,7 +6,7 @@ dRl2/dt=(-Rl2+((alpha*El2)/(Sm+Hl2^nm + sigma^nm)))/taus
 El2 = max((Dl2^nm - wo*or), 0)*max((1+wa*Ra2),0)
 dHl2/dt = (-Hl2 + wh*Rl2)/tauh
 
-dRr1/dt=(-Rr1+((alpha*El1)/(Sm+Hr1^nm + sigma^nm)))/taus
+dRr1/dt=(-Rr1+((alpha*Er1)/(Sm+Hr1^nm + sigma^nm)))/taus
 Er1 = max((Dr1^nm - wo*ol),0) * max((1+wa*Ra1),0)
 dHr1/dt = (-Hr1 + wh*Rr1)/tauh
 
