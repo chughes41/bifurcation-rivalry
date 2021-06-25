@@ -25,19 +25,19 @@ Sb2 = Eb2
 dRb2/dt = (-Rb2 + (Eb2)/(Sb2 + Hb2^n +sigma^n))/(taus)
 dHb2/dt = (-Hb2 + wh*Rb2)/tauh
 
-dRa1/dt = (-Ra1 + (Ea1)/(Sa + sigmaA^n))/taua
 Ea1 = (Rb1-Rb2)^n
+dRa1/dt = (-Ra1 + (Ea1)/(Sa + sigmaA^n))/taua
 
-dRa2/dt = (-Ra2 + (Ea2)/(Sa + sigmaA^n))/taua
 Ea2 = (Rb2-Rb1)^n
+dRa2/dt = (-Ra2 + (Ea2)/(Sa + sigmaA^n))/taua
 
 Sa = max(Ea1,0) + max(Ea2,0)
 
-dRor1/dt = (-Ror1 + (Eor1)/(Sor + sigma^n))/tauo
 Eor1 = (max((Rr1 - Rl1),0))^n
-dRor2/dt = (-Ror2 + (Eor2)/(Sor + sigma^n))/tauo
 Eor2 = (max((Rr2 - Rl2),0))^n
 Sor = Eor1 + Eor2
+dRor1/dt = (-Ror1 + (Eor1)/(Sor + sigma^n))/tauo
+dRor2/dt = (-Ror2 + (Eor2)/(Sor + sigma^n))/tauo
 Or = Ror1 + Ror2
 
 dRol1/dt = (-Rol1 + (Eol1)/(Sol + sigma^n))/tauo
