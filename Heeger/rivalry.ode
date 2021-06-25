@@ -15,15 +15,14 @@ Er2 = max((Dr2^nm - wo*ol),0)*max((1+wa*Ra2),0)
 dHr2/dt = (-Hr2 + wh*Rr2)/tauh
 
 Sm = El1+El2 + Er1+Er2
-
-dRb1/dt = (-Rb1 + (Eb1)/(Sb1 + Hb1^n +sigma^n))/(taus)
 Eb1 = (Rl1 + Rr1)^n
 Sb1 = Eb1
+dRb1/dt = (-Rb1 + (Eb1)/(Sb1 + Hb1^n +sigma^n))/(taus)
 dHb1/dt = (-Hb1 + wh*Rb1)/tauh
 
-dRb2/dt = (-Rb2 + (Eb2)/(Sb2 + Hb2^n +sigma^n))/(taus)
 Eb2 = (Rl2 + Rr2)^n
 Sb2 = Eb2
+dRb2/dt = (-Rb2 + (Eb2)/(Sb2 + Hb2^n +sigma^n))/(taus)
 dHb2/dt = (-Hb2 + wh*Rb2)/tauh
 
 dRa1/dt = (-Ra1 + (Ea1)/(Sa + sigmaA^n))/taua
