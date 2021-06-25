@@ -26,10 +26,10 @@ Sb2 = Eb2
 dRb2/dt = (-Rb2 + (Eb2)/(Sb2 + Hb2^n +sigma^n))/(taus)
 dHb2/dt = (-Hb2 + wh*Rb2)/tauh
 
-Ea1 = (Rb1-Rb2)^n
+Ea1 = sign(Rb1-Rb2)*(abs(Rb1-Rb2))^n
 dRa1/dt = (-Ra1 + (Ea1)/(Sa + sigmaA^n))/taua
 
-Ea2 = (Rb2-Rb1)^n
+Ea2 = sign(Rb2-Rb1)*(abs(Rb2-Rb1))^n
 dRa2/dt = (-Ra2 + (Ea2)/(Sa + sigmaA^n))/taua
 
 Sa = max(Ea1,0) + max(Ea2,0)
