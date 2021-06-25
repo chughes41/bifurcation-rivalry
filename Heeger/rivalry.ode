@@ -15,6 +15,7 @@ Er2 = max((Dr2^nm - wo*ol),0)*max((1+wa*Ra2),0)
 dHr2/dt = (-Hr2 + wh*Rr2)/tauh
 
 Sm = El1+El2 + Er1+Er2
+
 Eb1 = (Rl1 + Rr1)^n
 Sb1 = Eb1
 dRb1/dt = (-Rb1 + (Eb1)/(Sb1 + Hb1^n +sigma^n))/(taus)
