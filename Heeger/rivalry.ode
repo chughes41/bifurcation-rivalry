@@ -40,11 +40,11 @@ dRor1/dt = (-Ror1 + (Eor1)/(Sor + sigma^n))/tauo
 dRor2/dt = (-Ror2 + (Eor2)/(Sor + sigma^n))/tauo
 Or = Ror1 + Ror2
 
-dRol1/dt = (-Rol1 + (Eol1)/(Sol + sigma^n))/tauo
 Eol1 = (max((Rl1 - Rr1),0))^n
-dRol2/dt = (-Rol2 + (Eol2)/(Sol + sigma^n))/tauo
 Eol2 = (max((Rl2 - Rr2),0))^n
 Sol = Eol1 + Eol2
+dRol1/dt = (-Rol1 + (Eol1)/(Sol + sigma^n))/tauo
+dRol2/dt = (-Rol2 + (Eol2)/(Sol + sigma^n))/tauo
 Ol = Rol1 + Rol2
 
 
