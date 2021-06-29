@@ -55,5 +55,5 @@ param sigma=0.5, sigmaA=.2, alpha=2
 param wh=2, wo=.65, wa=.6
 param nm=1, n=2
 param Dl1=.5, Dl2=0, Dr1=0, Dr2=.5
-init RL1=randNum, RL2=randNum, RA1=randNum, RA2=randNum
+init RL1=.1, RL2=.1, RA1=.1, RA2=.1
 done
