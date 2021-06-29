@@ -1,17 +1,17 @@
-dRl1/dt=(-Rl1+((alpha*El1)/(Sm+Hl1^nm + sigma^nm)))/taus
 El1 = max((Dl1^nm - wo*or),0) * max((1+wa*Ra1),0)
+dRl1/dt=(-Rl1+((alpha*El1)/(Sm+Hl1^nm + sigma^nm)))/taus
 dHl1/dt = (-Hl1 + wh*Rl1)/tauh
 
-dRl2/dt=(-Rl2+((alpha*El2)/(Sm+Hl2^nm + sigma^nm)))/taus
 El2 = max((Dl2^nm - wo*or), 0)*max((1+wa*Ra2),0)
+dRl2/dt=(-Rl2+((alpha*El2)/(Sm+Hl2^nm + sigma^nm)))/taus
 dHl2/dt = (-Hl2 + wh*Rl2)/tauh
 
-dRr1/dt=(-Rr1+((alpha*Er1)/(Sm+Hr1^nm + sigma^nm)))/taus
 Er1 = max((Dr1^nm - wo*ol),0) * max((1+wa*Ra1),0)
+dRr1/dt=(-Rr1+((alpha*Er1)/(Sm+Hr1^nm + sigma^nm)))/taus
 dHr1/dt = (-Hr1 + wh*Rr1)/tauh
 
-dRr2/dt=(-Rr2+((alpha*Er2)/(Sm+Hr2^nm + sigma^nm)))/taus
 Er2 = max((Dr2^nm - wo*ol),0)*max((1+wa*Ra2),0)
+dRr2/dt=(-Rr2+((alpha*Er2)/(Sm+Hr2^nm + sigma^nm)))/taus
 dHr2/dt = (-Hr2 + wh*Rr2)/tauh
 
 Sm = El1+El2 + Er1+Er2
