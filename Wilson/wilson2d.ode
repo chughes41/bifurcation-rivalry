@@ -1,12 +1,13 @@
 # wilson2d.ode
 #
 #
-del/dt=(1/tau)*(-el+((100*(max(vl-g*ir,0))^2)/((10+hl)^2+(max(vl-g*ir,0))^2)))
+del/dt=(1/tau)*(-el+((100*(max(v-g*ir,0))^2)/((10+hl)^2+(max(v-g*ir,0))^2)))
 dil/dt=(1/taui)*(-il+el)
 dhl/dt=(1/tauh)*(-hl+h*el)
-der/dt=(1/tau)*(-er+((100*(max(vr-g*il,0))^2)/((10+hr)^2+(max(vr-g*il,0))^2)))
+der/dt=(1/tau)*(-er+((100*(max(v-g*il,0))^2)/((10+hr)^2+(max(v-g*il,0))^2)))
 dir/dt=(1/taui)*(-ir+er)
 dhr/dt=(1/tauh)*(-hr+h*er)
 par vl=10, vr=10, tau=20,taui=11,tauh=900,h=0.47,g=0.45
+par v=10
 init el=0.001,il=0,hl=0,er=0,ir=0,hr=0
 done
