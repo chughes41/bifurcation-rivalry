@@ -56,10 +56,12 @@ dRa2/dt = (-Ra2 + fireRate2)/taua
 #Ol = Rol1 + Rol2
 
 
+## Full equations above, but Rol2 ands Ror1 zeroed out
+## due to zero inputs Dl2 and Dr1. Didn't work with above
 Eol1 = (max((Rl1 ),0))^n
 Eor2 = (max((Rr2),0))^n
-dIvl/dt = (- Ivl + Eol1)/tauo
-dIvr/dt = (-Ivr + Eor2)/tauo
+dIvl/dt = (- Ivl + Eol1/(Eol1+sigma^n))/tauo
+dIvr/dt = (-Ivr + Eor2/(Eor2+sigma^n))/tauo
 
 
 param taua=150, tauo=20, taus=5, tauh=2000
