@@ -1,0 +1,94 @@
+El1 = max((input^nm - wo*Ivr-wo*Ivf),0) * max((1+wa*Ra1),0)
+
+Er2 = max((input^nm - wo*Ivl-wo*Ivf),0) * max((1+wa*Ra2),0)
+
+Ef = max((input^nm - wo*Ivl-wo*Ivr),0) * max((1+wa*Raf),0)
+
+Sm = El1+Er2+Ef
+
+dRl1/dt=(-Rl1+((alpha*El1)/(Sm+Hl1^nm + sigma^nm)))/taus
+dHl1/dt = (-Hl1 + wh*Rl1)/tauh
+
+dRr2/dt=(-Rr2+((alpha*Er2)/(Sm+Hr2^nm + sigma^nm)))/taus
+dHr2/dt = (-Hr2 + wh*Rr2)/tauh
+
+dRf/dt = (-Rf+((alpha*Ef)/(Sm+Hf^nm + sigma^nm)))/taus
+dHf/dt = (-Hf + wh*Rf)/tauh
+
+
+Eb1 = (Rl1)^n
+Sb1 = Eb1
+dRb1/dt = (-Rb1 + Eb1/(Sb1 + Hb1^n +sigma^n))/taus
+dHb1/dt = (-Hb1 + wh*Rb1)/tauh
+
+Eb2 = (Rr2)^n
+Sb2 = Eb2
+dRb2/dt = (-Rb2 + (Eb2)/(Sb2 + Hb2^n +sigma^n))/taus
+dHb2/dt = (-Hb2 + wh*Rb2)/tauh
+
+Ebf = (Rf)^n
+Sbf = Ebf
+dRbf/dt = (-Rbf + (Ebf)/(Sbf + Hbf^n +sigma^n))/taus
+dHbf/dt = (-Hbf + wh*Rbf)/tauh
+
+Ea1 = sign(Rb1-Rb2-Rbf)*(abs(Rb1-Rb2-Rbf))^n
+Ea2 = sign(Rb2-Rb1-Rbf)*(abs(Rb2-Rb1-Rbf))^n
+Eaf = sign(Rbf-Rb1-Rb2)*(abs(Rbf-Rb1-Rb2))^n
+
+#aux Ea1aux = sign(Rb1-Rb2)*(abs(Rb1-Rb2))^n
+#aux Ea2aux = sign(Rb2-Rb1)*(abs(Rb2-Rb1))^n
+#aux Eafaux = sign(Rbf-Rb1-Rb2)*(abs(Rbf-Rb1-Rb2))^n
+
+#aux SaS = (abs(Rb1-Rb2))^n + (abs(Rb2-Rb1))^n + sigmaA^n
+#aux Ra1Slope = (-Ra1 + Ea1/(Sa + sigmaA^n))/taua
+#aux Ra2Slope = (-Ra2 + Ea2/(Sa + sigmaA^n))/taua
+#aux fireRate1 = Ea1/( (abs(Rb1-Rb2))^n + (abs(Rb2-Rb1))^n + sigmaA^n)
+#aux fireRate2 = Ea2/( (abs(Rb1-Rb2))^n + (abs(Rb2-Rb1))^n + sigmaA^n)
+#Sa = (abs(Rb1-Rb2))^n + (abs(Rb2-Rb1))^n + sigmaA^n
+
+
+fireRate1 = Ea1/( (abs(Rb1-Rb2-Rbf))^n + (abs(Rb2-Rb1-Rbf))^n + (abs(Rbf-Rb1-Rb2))^n + sigmaA^n)
+fireRate2 = Ea2/( (abs(Rb1-Rb2-Rbf))^n + (abs(Rb2-Rb1-Rbf))^n + (abs(Rbf-Rb1-Rb2))^n + sigmaA^n)
+fireRate3 = Eaf/( (abs(Rb1-Rb2-Rbf))^n + (abs(Rb2-Rb1-Rbf))^n + (abs(Rbf-Rb1-Rb2))^n + sigmaA^n)
+
+dRa1/dt = (-Ra1 + fireRate1)/taua
+dRa2/dt = (-Ra2 + fireRate2)/taua
+dRaf/dt = (-Raf + fireRate3)/taua
+
+#Eor1 = (max((- Rl1),0))^n
+#Eor2 = (max((Rr2),0))^n
+#Sor = Eor1 + Eor2
+#dRor1/dt = (-Ror1 + (Eor1)/(Sor + sigma^n))/tauo
+#dRor2/dt = (-Ror2 + (Eor2)/(Sor + sigma^n))/tauo
+#Or = Ror1 + Ror2
+
+#Eol1 = (max((Rl1 ),0))^n
+#Eol2 = (max((-Rr2),0))^n
+#Sol = Eol1 + Eol2
+#dRol1/dt = (-Rol1 + (Eol1)/(Sol + sigma^n))/tauo
+#dRol2/dt = (-Rol2 + (Eol2)/(Sol + sigma^n))/tauo
+#Ol = Rol1 + Rol2
+
+
+## Full equations above, but Rol2 ands Ror1 zeroed out
+## due to zero inputs Dl2 and Dr1. Didn't work with above
+Eol1 = (max((Rl1),0))^n
+Eor2 = (max((Rr2),0))^n
+Eof =  (max((Rf),0))^n
+dIvl/dt = (-Ivl + Eol1/(Eol1+sigma^n))/tauo
+dIvr/dt = (-Ivr + Eor2/(Eor2+sigma^n))/tauo
+dIvf/dt = (-Ivf + Eof/(Eof+sigma^n))/tauo
+
+
+param taua=150, tauo=20, taus=5, tauh=2000
+param sigma=0.5, sigmaA=.2, alpha=2
+param wh=2, wo=.65, wa=.6
+param nm=1, n=2
+param input=.5, Dl2=0, Dr1=0
+#param Dl1=.5, Dl2=0, Dr1=0, Dr2=.5
+#param Or=0, Ol=0
+#param Ol=0
+#param Ra1=0, Ra2=0
+init RL=.1
+#RA1=.1, RA2=.1
+done
