@@ -82,10 +82,10 @@ dIvf/dt = (-Ivf + Eof/(Eof+sigma^n))/tauo
 
 param taua=150, tauo=20, taus=5, tauh=2000
 param sigma=0.5, sigmaA=.2, alpha=2
-param wh=2, wo=.32, wa=.6
+param wh=2, wo=.65, wa=.6
 param nm=1, n=2
 param input=.5, Dl2=0, Dr1=0
-variance = 0
+param variance = 0.01
 #param Dl1=.5, Dl2=0, Dr1=0, Dr2=.5
 #param Or=0, Ol=0
 #param Ol=0
