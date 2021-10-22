@@ -1,8 +1,14 @@
-El1 = max(((input+normal(0,variance))^nm - wo*Ivr-wo*Ivf),0) * max((1+wa*Ra1),0)
+normalA(x)=(1/(sigmaN*sqrt(2*pi)))*exp(-(1/2)*(((x-mu)/sigmaN)^2))
+ratio(x,y)=normalA(x)/normalA(y)
 
-Er2 = max(((input+normal(0,variance))^nm - wo*Ivl-wo*Ivf),0) * max((1+wa*Ra2),0)
+angle(t) = (Amp/2) * sin((6.28/b)*t) + (Amp/2)
 
-Ef = max(((input+normal(0,variance))^nm - wo*Ivl-wo*Ivr),0) * max((1+wa*Raf),0)
+El1 = max(((inputL+normal(0,variance))^nm - wo*Ivr-wo*Ivf),0) * max((1+wa*Ra1),0)
+
+Er2 = max(((inputR+normal(0,variance))^nm - wo*Ivl-wo*Ivf),0) * max((1+wa*Ra2),0)
+
+Ef =  max(((inputF+(0.2*ratio(angle(t),angleC))+normal(0,variance))^nm - wo*Ivl-wo*Ivr),0) * max((1+wa*Raf),0)
+
 
 Sm = El1+Er2+Ef
 
@@ -14,7 +20,6 @@ dHr2/dt = (-Hr2 + wh*Rr2)/tauh
 
 dRf/dt = (-Rf+((alpha*Ef)/(Sm+Hf^nm + sigma^nm)))/taus
 dHf/dt = (-Hf + wh*Rf)/tauh
-
 
 Eb1 = (Rl1)^n
 Sb1 = Eb1
@@ -34,6 +39,9 @@ dHbf/dt = (-Hbf + wh*Rbf)/tauh
 Ea1 = sign(Rb1-Rb2-Rbf)*(abs(Rb1-Rb2-Rbf))^n
 Ea2 = sign(Rb2-Rb1-Rbf)*(abs(Rb2-Rb1-Rbf))^n
 Eaf = sign(Rbf-Rb1-Rb2)*(abs(Rbf-Rb1-Rb2))^n
+
+
+aux angleVal = angle(t)
 
 #aux Ea1aux = sign(Rb1-Rb2)*(abs(Rb1-Rb2))^n
 #aux Ea2aux = sign(Rb2-Rb1)*(abs(Rb2-Rb1))^n
@@ -79,17 +87,23 @@ dIvl/dt = (-Ivl + Eol1/(Eol1+sigma^n))/tauo
 dIvr/dt = (-Ivr + Eor2/(Eor2+sigma^n))/tauo
 dIvf/dt = (-Ivf + Eof/(Eof+sigma^n))/tauo
 
-
+param Amp = 50
+param b = 40000
+#param angle=30
+param mu=0
+param angleC=30
+param sigmaN = 25.2
 param taua=150, tauo=20, taus=5, tauh=2000
 param sigma=0.5, sigmaA=.2, alpha=2
 param wh=2, wo=.65, wa=.6
 param nm=1, n=2
-param input=.5, Dl2=0, Dr1=0
-param variance = 0.01
+param input = .5
+param inputL=.5,inputR=.5,inputF =.3, Dl2=0, Dr1=0
+param variance = 0
 #param Dl1=.5, Dl2=0, Dr1=0, Dr2=.5
 #param Or=0, Ol=0
 #param Ol=0
 #param Ra1=0, Ra2=0
-init RL1=.1
+init RL1=.1, RR2=.102, RF=.101
 #RA1=.1, RA2=.1
 done
