@@ -1,16 +1,22 @@
 normalA(x)=(1/(sigmaN*sqrt(2*pi)))*exp(-(1/2)*(((x-mu)/sigmaN)^2))
 ratio(x,y)=normalA(x)/normalA(y)
 
-angle(t) = (Amp/2) * sin((6.28/b)*t) + (Amp/2)
+#angle(t) = (Amp/2) * sin((6.28/b)*(t+phi)) + (Amp/2)
+#angle(t) = slope*t+intercept
+angle(t) = 30
 
-El1 = max(((inputL+normal(0,variance))^nm - wo*Ivr-wo*Ivf),0) * max((1+wa*Ra1),0)
+El1 = max(((inputL+n1)^nm - wo*Ivr-wo*Ivf),0) * max((1+wa*Ra1),0)
 
-Er2 = max(((inputR+normal(0,variance))^nm - wo*Ivl-wo*Ivf),0) * max((1+wa*Ra2),0)
+Er2 = max(((inputR+n2)^nm - wo*Ivl-wo*Ivf),0) * max((1+wa*Ra2),0)
 
-Ef =  max(((inputF+(0.2*ratio(angle(t),angleC))+normal(0,variance))^nm - wo*Ivl-wo*Ivr),0) * max((1+wa*Raf),0)
+Ef =  max(((inputF+(0.2*ratio(angle(t),angleC))+nf)^nm - wo*Ivl-wo*Ivr),0) * max((1+wa*Raf),0)
 
 
 Sm = El1+Er2+Ef
+
+dn1/dt = (-n1 + sigmaOU*sqrt(2*taun)*normal(0,1))/taun
+dn2/dt = (-n2 + sigmaOU*sqrt(2*taun)*normal(0,1))/taun
+dnf/dt = (-nf + sigmaOU*sqrt(2*taun)*normal(0,1))/taun
 
 dRl1/dt=(-Rl1+((alpha*El1)/(Sm+Hl1^nm + sigma^nm)))/taus
 dHl1/dt = (-Hl1 + wh*Rl1)/tauh
@@ -87,19 +93,26 @@ dIvl/dt = (-Ivl + Eol1/(Eol1+sigma^n))/tauo
 dIvr/dt = (-Ivr + Eor2/(Eor2+sigma^n))/tauo
 dIvf/dt = (-Ivf + Eof/(Eof+sigma^n))/tauo
 
+
+param sigmaOU = 0.08
+
+
+param slope = 0.01
+param intercept = 0
+param phi = 0
 param Amp = 50
-param b = 40000
+param b = 30000
 #param angle=30
 param mu=0
 param angleC=30
 param sigmaN = 25.2
-param taua=150, tauo=20, taus=5, tauh=2000
+param taua=450, tauo=60, taus=15, tauh=6000, taun=300
 param sigma=0.5, sigmaA=.2, alpha=2
 param wh=2, wo=.65, wa=.6
 param nm=1, n=2
 param input = .5
-param inputL=.5,inputR=.5,inputF =.3, Dl2=0, Dr1=0
-param variance = 0
+param inputL=.5,inputR=.5,inputF =.5, Dl2=0, Dr1=0
+param variance = 0.01
 #param Dl1=.5, Dl2=0, Dr1=0, Dr2=.5
 #param Or=0, Ol=0
 #param Ol=0
