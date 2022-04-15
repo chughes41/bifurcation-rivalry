@@ -2,8 +2,8 @@ normalA(x)=(1/(sigmaN*sqrt(2*pi)))*exp(-(1/2)*(((x-mu)/sigmaN)^2))
 ratio(x,y)=normalA(x)/normalA(y)
 
 #angle(t) = (Amp/2) * sin((6.28/b)*(t+phi)) + (Amp/2)
-#angle(t) = slope*t+intercept
-angle(t) = 30
+angle(t) = slope*t+intercept
+#angle(t) = 60
 
 El1 = max(((inputL+n1)^nm - wo*Ivr-wo*Ivf),0) * max((1+wa*Ra1),0)
 
@@ -97,8 +97,8 @@ dIvf/dt = (-Ivf + Eof/(Eof+sigma^n))/tauo
 param sigmaOU = 0.08
 
 
-param slope = 0.01
-param intercept = 0
+param slope = 0
+param intercept = 60
 param phi = 0
 param Amp = 50
 param b = 30000
@@ -111,7 +111,7 @@ param sigma=0.5, sigmaA=.2, alpha=2
 param wh=2, wo=.65, wa=.6
 param nm=1, n=2
 param input = .5
-param inputL=.5,inputR=.5,inputF =.5, Dl2=0, Dr1=0
+param inputL=.5,inputR=.5,inputF =.3, Dl2=0, Dr1=0
 param variance = 0.01
 #param Dl1=.5, Dl2=0, Dr1=0, Dr2=.5
 #param Or=0, Ol=0
