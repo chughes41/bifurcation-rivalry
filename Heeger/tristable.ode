@@ -94,9 +94,12 @@ dIvr/dt = (-Ivr + Eor2/(Eor2+sigma^n))/tauo
 dIvf/dt = (-Ivf + Eof/(Eof+sigma^n))/tauo
 
 
-param sigmaOU = 0.08
 
+param multiplier = 3
+param noiseTime = 1
+param noiseMult = 1
 
+param sigmaOU = 0.01*noiseMult
 param slope = 0
 param intercept = 60
 param phi = 0
@@ -106,7 +109,7 @@ param b = 30000
 param mu=0
 param angleC=30
 param sigmaN = 25.2
-param taua=450, tauo=60, taus=15, tauh=6000, taun=300
+param taua=150*multiplier, tauo=20*multiplier, taus=5*multiplier, tauh=2000*multiplier, taun=100*noiseTime
 param sigma=0.5, sigmaA=.2, alpha=2
 param wh=2, wo=.65, wa=.6
 param nm=1, n=2
