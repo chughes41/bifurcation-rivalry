@@ -6,7 +6,7 @@ import statistics
 
 
 
-Time, n1, n2, n3, RL1,HL1,RR2,HR2,RF,HF,RB1,HB1,RB2,HB2,RBF,HBF,RA1,RA2,RAF,IVL,IVR,IVF,ANGLEVAL = loadtxt('histogramTest10.dat', unpack=True)
+Time, n1, n2, n3, RL1,HL1,RR2,HR2,RF,HF,RB1,HB1,RB2,HB2,RBF,HBF,RA1,RA2,RAF,IVL,IVR,IVF,ANGLEVAL = loadtxt('1_3_9_bistable.dat', unpack=True)
 
 states =[]
 biStates=[]

@@ -1,0 +1,89 @@
+normalA(x)=(1/(sigmaN*sqrt(2*pi)))*exp(-(1/2)*(((x-mu)/sigmaN)^2))
+ratio(x,y)=normalA(x)/normalA(y)
+
+El1 = max(((inputL)^nm - wo*Ivr-wo*Ivf),0) * max((1+wa*Ra1),0)
+
+Er2 = max(((inputR)^nm - wo*Ivl-wo*Ivf),0) * max((1+wa*Ra2),0)
+
+Ef =  max((((inputL+inputR)*fusionG*(fusionW+((1-fusionW)*ratio(angle,angleC))))^nm - wo*Ivl-wo*Ivr),0) * max((1+wa*Raf),0)
+
+
+Sm = El1+Er2+Ef
+
+dRl1/dt=(-Rl1+((alpha*El1)/(Sm+Hl1^nm + sigma^nm)))/(taus*multiplier)
+dHl1/dt = (-Hl1 + wh*Rl1)/(tauh*multiplier)
+
+dRr2/dt=(-Rr2+((alpha*Er2)/(Sm+Hr2^nm + sigma^nm)))/(taus*multiplier)
+dHr2/dt = (-Hr2 + wh*Rr2)/(tauh*multiplier)
+
+dRf/dt = (-Rf+((alpha*Ef)/(Sm+Hf^nm + sigma^nm)))/(taus*multiplier)
+dHf/dt = (-Hf + wh*Rf)/(tauh*multiplier)
+
+Eb1 = (Rl1)^n
+Sb1 = Eb1
+dRb1/dt = (-Rb1 + Eb1/(Sb1 + Hb1^n +sigma^n))/(taus*multiplier)
+dHb1/dt = (-Hb1 + wh*Rb1)/(tauh*multiplier)
+
+Eb2 = (Rr2)^n
+Sb2 = Eb2
+dRb2/dt = (-Rb2 + (Eb2)/(Sb2 + Hb2^n +sigma^n))/(taus*multiplier)
+dHb2/dt = (-Hb2 + wh*Rb2)/(tauh*multiplier)
+
+Ebf = (Rf)^n
+Sbf = Ebf
+dRbf/dt = (-Rbf + (Ebf)/(Sbf + Hbf^n +sigma^n))/(taus*multiplier)
+dHbf/dt = (-Hbf + wh*Rbf)/(tauh*multiplier)
+
+Ea1 = sign(Rb1-Rb2-Rbf)*(abs(Rb1-Rb2-Rbf))^n
+Ea2 = sign(Rb2-Rb1-Rbf)*(abs(Rb2-Rb1-Rbf))^n
+Eaf = sign(Rbf-Rb1-Rb2)*(abs(Rbf-Rb1-Rb2))^n
+
+fireRate1 = Ea1/( (abs(Rb1-Rb2-Rbf))^n + (abs(Rb2-Rb1-Rbf))^n + (abs(Rbf-Rb1-Rb2))^n + sigmaA^n)
+fireRate2 = Ea2/( (abs(Rb1-Rb2-Rbf))^n + (abs(Rb2-Rb1-Rbf))^n + (abs(Rbf-Rb1-Rb2))^n + sigmaA^n)
+fireRate3 = Eaf/( (abs(Rb1-Rb2-Rbf))^n + (abs(Rb2-Rb1-Rbf))^n + (abs(Rbf-Rb1-Rb2))^n + sigmaA^n)
+
+dRa1/dt = (-Ra1 + fireRate1)/(taua*multiplier)
+dRa2/dt = (-Ra2 + fireRate2)/(taua*multiplier)
+dRaf/dt = (-Raf + fireRate3)/(taua*multiplier)
+
+#Eor1 = (max((- Rl1),0))^n
+#Eor2 = (max((Rr2),0))^n
+#Sor = Eor1 + Eor2
+#dRor1/dt = (-Ror1 + (Eor1)/(Sor + sigma^n))/(tauo*multiplier)
+#dRor2/dt = (-Ror2 + (Eor2)/(Sor + sigma^n))/(tauo*multiplier)
+#Or = Ror1 + Ror2
+
+#Eol1 = (max((Rl1 ),0))^n
+#Eol2 = (max((-Rr2),0))^n
+#Sol = Eol1 + Eol2
+#dRol1/dt = (-Rol1 + (Eol1)/(Sol + sigma^n))/(tauo*multiplier)
+#dRol2/dt = (-Rol2 + (Eol2)/(Sol + sigma^n))/(tauo*multiplier)
+#Ol = Rol1 + Rol2
+
+
+## Full equations above, but Rol2 ands Ror1 zeroed out
+## due to zero inputs Dl2 and Dr1. Didn't work with above
+Eol1 = (max((Rl1),0))^n
+Eor2 = (max((Rr2),0))^n
+Eof =  (max((Rf),0))^n
+dIvl/dt = (-Ivl + Eol1/(Eol1+sigma^n))/(tauo*multiplier)
+dIvr/dt = (-Ivr + Eor2/(Eor2+sigma^n))/(tauo*multiplier)
+dIvf/dt = (-Ivf + Eof/(Eof+sigma^n))/(tauo*multiplier)
+
+param fusionW = 0.6
+param fusionG = 0.5
+
+param multiplier = 3
+param mu=0
+param angleC=30
+param sigmaN = 25.2
+param taua=150, tauo=20, taus=5, tauh=2000*multiplier, taun=100
+param sigma=0.5, sigmaA=.2, alpha=2
+param wh=2, wo=.65, wa=.6
+param nm=1, n=2
+param inputL=.5,inputR=.5, Dl2=0, Dr1=0
+param angle = 30
+
+
+init RL1=.1, RR2=.102, RF=.101
+done

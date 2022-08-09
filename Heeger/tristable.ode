@@ -9,7 +9,8 @@ El1 = max(((inputL+n1)^nm - wo*Ivr-wo*Ivf),0) * max((1+wa*Ra1),0)
 
 Er2 = max(((inputR+n2)^nm - wo*Ivl-wo*Ivf),0) * max((1+wa*Ra2),0)
 
-Ef =  max(((inputF+(0.2*ratio(angle(t),angleC))+nf)^nm - wo*Ivl-wo*Ivr),0) * max((1+wa*Raf),0)
+#Ef =  max(((inputF+(0.2*ratio(angle(t),angleC))+nf)^nm - wo*Ivl-wo*Ivr),0) * max((1+wa*Raf),0)
+Ef =  max((((inputL+inputR)*(0.3+(0.2*ratio(angle(t),angleC)))+nf)^nm - wo*Ivl-wo*Ivr),0) * max((1+wa*Raf),0)
 
 
 Sm = El1+Er2+Ef
@@ -116,6 +117,8 @@ param nm=1, n=2
 param input = .5
 param inputL=.5,inputR=.5,inputF =.3, Dl2=0, Dr1=0
 param variance = 0.01
+
+
 #param Dl1=.5, Dl2=0, Dr1=0, Dr2=.5
 #param Or=0, Ol=0
 #param Ol=0
